@@ -1,0 +1,11 @@
+header {
+  padding: 0 5%;
+  border-bottom: 1px solid black;
+  .logo {
+    display: inline-block;
+    width: fit-content;
+  }
+  .navbar {
+    float: right;
+  }
+}
