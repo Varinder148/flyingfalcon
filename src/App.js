@@ -1,11 +1,23 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Header from "./components/header/header.component"
+import { connect } from "react-redux";
 
-const App = () => (
+import Header from "./components/header/header.component";
+import Gamepage from "./pages/gamePage/gamepage.page";
+import { fetchTokenAsync } from "./redux/game/game.action";
+
+const App = ({ fetchToken }) => {
+  fetchToken();
+  return (
   <>
+    {/* {console.log(fetchToken())} */}
     <Header />
+    <Gamepage />
   </>
-);
+)}
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  fetchToken: () => dispatch(fetchTokenAsync()),
+});
+
+export default connect(null, mapDispatchToProps)(App);

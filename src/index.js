@@ -4,9 +4,13 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
+import axios from 'axios'
 
 import { store } from "./redux/store";
 
+
+axios.defaults.baseURL = 'https://findfalcone.herokuapp.com/';
+axios.defaults.headers.common['Accept'] = "application/json";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
