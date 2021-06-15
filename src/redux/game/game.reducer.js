@@ -1,28 +1,50 @@
 import gametype from "./game.type";
+import { filterPlanets } from "./game.utils";
 
 const INITIAL_STATE = {
-  token: "",
-  isFetchingToken: false,
+  token: { value: "", error: false, isFetching: false },
+  planets: { value: "", error: false, isFetching: false },
+  vehicles: { value: "", error: false, isFetching: false },
+  filteredPlanets: [],
 };
 
 const gameReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case gametype.START_TOKEN_FETCHING:
+    case gametype.START_FETCHING:
       return {
         ...state,
-        isFetchingToken: true,
+        [action.requestType]: {
+          ...state[action.requestType],
+          isFetching: true,
+        },
       };
-    case gametype.TOKEN_REQUEST_SUCCESS:
+
+    case gametype.REQUEST_SUCCESS:
       return {
         ...state,
-        isFetchingToken: false,
-        token: action.payload,
+        [action.requestType]: {
+          ...state[action.requestType],
+          isFetching: false,
+          value: action.payload,
+        },
       };
-    case gametype.TOKEN_REQUEST_FAIL:
+
+    case gametype.REQUEST_FAIL:
       return {
         ...state,
-        isFetchingToken: false,
+        [action.requestType]: {
+          ...state[action.requestType],
+          isFetching: false,
+          error: true,
+        },
       };
+
+    case gametype.FILTER_PLANETS:
+      return {
+        ...state,
+        filteredPlanets: filterPlanets(state.planets.value, action.payload),
+      };
+
     default:
       return state;
   }
