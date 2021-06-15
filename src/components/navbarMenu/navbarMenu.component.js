@@ -1,7 +1,7 @@
 import React from "react";
-import './navbar.style.scss';
+import './navbarMenu.style.scss';
 
-const Navbar = () => {
+const NavbarMenu = () => {
   return (
     <ul className="navbar">
       <li>Reset</li>
@@ -9,4 +9,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar
+export default NavbarMenu

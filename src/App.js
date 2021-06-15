@@ -1,23 +1,30 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { connect } from "react-redux";
 
 import Header from "./components/header/header.component";
 import Gamepage from "./pages/gamePage/gamepage.page";
-import { fetchTokenAsync } from "./redux/game/game.action";
+import {
+  fetchTokenAsync,
+  fetchPlanetsAsync,
+  fetchVehiclesAsync,
+} from "./redux/game/game.action";
 
-const App = ({ fetchToken }) => {
-  fetchToken();
+const App = ({ fetchToken,fetchPlanetsAsync,fetchVehiclesAsync }) => {
+  // fetchToken();
+  fetchPlanetsAsync();
+  fetchVehiclesAsync();
   return (
-  <>
-    {/* {console.log(fetchToken())} */}
-    <Header />
-    <Gamepage />
-  </>
-)}
+    <>
+      <Header />
+      <Gamepage />
+    </>
+  );
+};
 
 const mapDispatchToProps = (dispatch) => ({
   fetchToken: () => dispatch(fetchTokenAsync()),
+  fetchPlanetsAsync: () => dispatch(fetchPlanetsAsync()),
+  fetchVehiclesAsync: () => dispatch(fetchVehiclesAsync()),
 });
 
 export default connect(null, mapDispatchToProps)(App);
