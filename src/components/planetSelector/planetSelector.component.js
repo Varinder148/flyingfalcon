@@ -10,32 +10,37 @@ const PlanetsSelection = ({
   filteredPlanets,
   selectorId,
   playerSelectedPlanets,
+  setShowVehicles,
+  showVehicles,
 }) => {
-  if (planets.isFetching) {
-    return <h1>Loading</h1>;
-  }
-
-  if (!planets.value) {
-    return <h1>Something is wrong</h1>;
+  if (planets.isFetching || !planets.value) {
+    return <span>Loading...</span>;
   }
 
   let planetsValue = planets.value;
 
   const selectionChangedHandler = (e) => {
     e.preventDefault();
+    if (!showVehicles) {
+      setShowVehicles(true);
+    }
+
     let planet = JSON.parse(e.target.value);
-    addPlanet(selectorId, planet, playerSelectedPlanets);
+    addPlanet(selectorId, planet);
   };
+
   if (filteredPlanets.length > 0) {
     planetsValue = filteredPlanets;
   }
+
   return (
     <>
       <select
         onChange={selectionChangedHandler}
         value={JSON.stringify(playerSelectedPlanets[selectorId])}
+        defaultValue="empty"
       >
-        <option disabled selected value>
+        <option disabled value="empty">
           -- select an option --
         </option>
         {planetsValue.map((planet) => (
@@ -60,7 +65,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addPlanet: (selectorId, planet, playerSelectedPlanets) => {
+  addPlanet: (selectorId, planet) => {
     dispatch(addPlanetStart(selectorId, planet));
   },
 });

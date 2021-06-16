@@ -2,10 +2,10 @@ import axios from "axios";
 
 import gametype from "./game.type";
 
-export const startFilteringPlanets = (playerPlanets)=>({
+export const startFilteringPlanets = (playerPlanets) => ({
   type: gametype.FILTER_PLANETS,
-  payload: playerPlanets
-})
+  payload: playerPlanets,
+});
 
 export const startFetch = (requestType) => ({
   type: gametype.START_FETCHING,
@@ -23,7 +23,7 @@ export const fetchFail = (requestType) => ({
   requestType: requestType,
 });
 
-export const fetchTokenAsync = () => {
+const fetchTokenAsync = () => {
   return async (dispatch) => {
     let requestType = "token";
 
@@ -37,7 +37,7 @@ export const fetchTokenAsync = () => {
   };
 };
 
-export const fetchPlanetsAsync = () => {
+const fetchPlanetsAsync = () => {
   return async (dispatch) => {
     let requestType = "planets";
     try {
@@ -50,7 +50,7 @@ export const fetchPlanetsAsync = () => {
   };
 };
 
-export const fetchVehiclesAsync = () => {
+const fetchVehiclesAsync = () => {
   return async (dispatch) => {
     let requestType = "vehicles";
     try {
@@ -60,5 +60,30 @@ export const fetchVehiclesAsync = () => {
     } catch {
       dispatch(fetchFail(requestType));
     }
+  };
+};
+
+export const disableCorrespondingVehicles = (selectorId, planet) => ({
+  type: gametype.DISABLE_CORRESPONDING_VEHICLES,
+  payload: planet,
+  selectorId: selectorId,
+});
+
+export const decrementVehicleCount = (selectorId, vehicle, playerVehicles) => ({
+  type: gametype.DECREMENT_VEHICLE_COUNT,
+  payload: vehicle,
+  selectorId: selectorId,
+  playerVehicles:playerVehicles
+});
+
+export const initiateAvailableVehicleCount = ()=>({
+  type: gametype.INITIATE_AVAILABLE_VEHICLE_COUNT
+})
+
+export const loadGame = () => {
+  return (dispatch) => {
+    dispatch(fetchTokenAsync());
+    dispatch(fetchPlanetsAsync());
+    dispatch(fetchVehiclesAsync());
   };
 };

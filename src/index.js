@@ -12,11 +12,11 @@ import { store } from "./redux/store";
 axios.defaults.baseURL = 'https://findfalcone.herokuapp.com/';
 axios.defaults.headers.common['Accept'] = "application/json";
 ReactDOM.render(
-  <React.StrictMode>
+  
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
+  ,
   document.getElementById("root")
 );
 

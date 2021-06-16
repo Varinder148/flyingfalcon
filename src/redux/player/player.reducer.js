@@ -2,7 +2,7 @@ import playerTypes from "./player.type";
 
 const INITIAL_STATE = {
   selectedPlanets: {},
-  selectedVehicles: [],
+  selectedVehicles: {},
 };
 
 const playerReducer = (state = INITIAL_STATE, action) => {
@@ -10,16 +10,24 @@ const playerReducer = (state = INITIAL_STATE, action) => {
     case playerTypes.ADD_PLANET:
       return {
         ...state,
-        selectedPlanets: {...state.selectedPlanets, [action.selectorId]: action.payload},
+        selectedPlanets: {
+          ...state.selectedPlanets,
+          [action.selectorId]: action.payload,
+        },
       };
+
     case playerTypes.ADD_VEHICLE:
       return {
         ...state,
-        selectedVehicles: [...state.selectedVehicles, action.payload],
+        selectedVehicles: {
+          ...state.selectedVehicles,
+          [action.selectorId]: action.payload,
+        },
       };
+
     default:
       return state;
   }
 };
 
-export default playerReducer
+export default playerReducer;

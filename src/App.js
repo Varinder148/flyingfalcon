@@ -3,16 +3,10 @@ import { connect } from "react-redux";
 
 import Header from "./components/header/header.component";
 import Gamepage from "./pages/gamePage/gamepage.page";
-import {
-  fetchTokenAsync,
-  fetchPlanetsAsync,
-  fetchVehiclesAsync,
-} from "./redux/game/game.action";
+import { loadGame } from "./redux/game/game.action";
 
-const App = ({ fetchToken,fetchPlanetsAsync,fetchVehiclesAsync }) => {
-  // fetchToken();
-  fetchPlanetsAsync();
-  fetchVehiclesAsync();
+const App = ({ loadGame }) => {
+  loadGame();
   return (
     <>
       <Header />
@@ -22,9 +16,7 @@ const App = ({ fetchToken,fetchPlanetsAsync,fetchVehiclesAsync }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchToken: () => dispatch(fetchTokenAsync()),
-  fetchPlanetsAsync: () => dispatch(fetchPlanetsAsync()),
-  fetchVehiclesAsync: () => dispatch(fetchVehiclesAsync()),
+  loadGame: () => dispatch(loadGame()),
 });
 
 export default connect(null, mapDispatchToProps)(App);
