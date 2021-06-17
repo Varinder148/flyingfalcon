@@ -1,4 +1,4 @@
-export const filterPlanets = (origPlanets, playerPlanetsObject) => {
+export const filterPlanetsUtil = (origPlanets, playerPlanetsObject) => {
   let playerPlanets = Object.values(playerPlanetsObject);
   let filteredRes = origPlanets.filter((origPlanet) => {
     return !playerPlanets.find(
@@ -8,7 +8,7 @@ export const filterPlanets = (origPlanets, playerPlanetsObject) => {
   return filteredRes;
 };
 
-export const disableVehicles = (
+export const disableVehiclesUtil = (
   selectorId,
   planetBeingSelected,
   filteredVehicles,
@@ -31,14 +31,10 @@ export const disableVehicles = (
   return { ...filteredVehicles, [selectorId]: VehiclesThatCanReachThisPlanet };
 };
 
-export const initiateCount = (vehicles) => {
-  return vehicles.map((vehicle) => ({
-    name: vehicle.name,
-    total_no: vehicle.total_no,
-  }));
-};
-
-export const decrement = (playerSelectedVehicles, origVehicles) => {
+export const decrementVehicleCountUtil = (
+  playerSelectedVehicles,
+  origVehicles
+) => {
   let res = [];
 
   playerSelectedVehicles = Object.values(playerSelectedVehicles);

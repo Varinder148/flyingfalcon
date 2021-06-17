@@ -1,11 +1,22 @@
-header {
-  padding: 0 5%;
-  border-bottom: 1px solid black;
-  .logo {
-    display: inline-block;
-    width: fit-content;
-  }
-  .navbar {
-    float: right;
+.header-wrapper {
+  position: relative;
+  width: 100%;
+  height: 5rem;
+  header {
+    width: 100%;
+    position: absolute;
+    height: 5rem;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      display: inline-block;
+      width: fit-content;
+      font-size: 1.5rem;
+    }
+    .navbar {
+      float: right;
+    }
   }
 }

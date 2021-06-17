@@ -1,4 +1,7 @@
 .vehicle-menu{
   display: flex;
   flex-direction: column;
+  input[type="radio"]:checked+label{
+    font-weight: 700;
+  }
 }

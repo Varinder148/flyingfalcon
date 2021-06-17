@@ -25,7 +25,7 @@ export const addPlanetStart = (selectorId, planet) => {
     let selectedPlanetsValueFromStore = store.getState().player.selectedPlanets;
     dispatch(startFilteringPlanets(selectedPlanetsValueFromStore));
     dispatch(disableCorrespondingVehicles(selectorId, planet));
-    dispatch(initiateAvailableVehicleCount());
+    // dispatch(initiateAvailableVehicleCount());
   };
 };
 
@@ -39,11 +39,11 @@ export const addVehicleStart = (selectorId, vehicle) => {
         store.getState().player.selectedVehicles
       )
     );
-    dispatch(
-      disableCorrespondingVehicles(
-        selectorId,
-        store.getState().player.selectedPlanets[selectorId]
-      )
-    );
+  };
+};
+
+export const launchSearch = () => {
+  return (dispatch) => {
+
   };
 };
