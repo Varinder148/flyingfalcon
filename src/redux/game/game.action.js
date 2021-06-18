@@ -1,5 +1,4 @@
 import axios from "axios";
-import { store } from "../store";
 
 import gameTypes from "./game.type";
 
@@ -13,15 +12,16 @@ export const startFetch = (requestType) => ({
   requestType: requestType,
 });
 
-export const fetchSuccess = (requestType, token) => ({
+export const fetchSuccess = (requestType, payload) => ({
   type: gameTypes.REQUEST_SUCCESS,
-  payload: token,
+  payload: payload,
   requestType: requestType,
 });
 
-export const fetchFail = (requestType) => ({
+export const fetchFail = (requestType,msg) => ({
   type: gameTypes.REQUEST_FAIL,
   requestType: requestType,
+  msg: msg
 });
 
 export const disableCorrespondingVehicles = (selectorId, planet) => ({
@@ -39,6 +39,12 @@ export const decrementVehicleCount = (selectorId, vehicle, playerVehicles) => ({
 
 export const resetGame = () => ({
   type: gameTypes.RESET_GAME,
+});
+
+export const updateResult = (msg, error) => ({
+  type: gameTypes.UPDATE_RESULT,
+  payload: msg,
+  error: error,
 });
 
 const fetchTokenAsync = () => {

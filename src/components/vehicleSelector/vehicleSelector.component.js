@@ -43,7 +43,7 @@ const VehicleSelector = ({
     return foundVehicle ? foundVehicle.total_no : currVehicle.total_no;
   };
 
-  const checkIfCurrentlyPlayerSelectedVehicleIsEqualToVehicleInLoop = (
+  const checkIfCurrentPlayerSelectedVehicleIsEqualToVehicleInLoop = (
     vehicle
   ) =>
     (selectPlayerSelectedVehicles[selectorId] &&
@@ -61,14 +61,14 @@ const VehicleSelector = ({
             value={JSON.stringify(vehicle)}
             checked={
               !vehicle.disabled &&
-              checkIfCurrentlyPlayerSelectedVehicleIsEqualToVehicleInLoop(
+              checkIfCurrentPlayerSelectedVehicleIsEqualToVehicleInLoop(
                 vehicle
               )
             }
             onChange={vehicleChangeHandler}
             disabled={
               (vehicle.disabled || findCount(vehicle) === 0) &&
-              !checkIfCurrentlyPlayerSelectedVehicleIsEqualToVehicleInLoop(
+              !checkIfCurrentPlayerSelectedVehicleIsEqualToVehicleInLoop(
                 vehicle
               )
             }

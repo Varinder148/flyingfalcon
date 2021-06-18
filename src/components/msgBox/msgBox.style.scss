@@ -1,0 +1,22 @@
+.msg-box{
+  min-width:15rem;
+  min-height:10rem;
+  width:50%;
+  height:40%;
+  border: 1px solid black;
+  position: fixed;
+  top:30%;
+  left:50%;
+  transform: translate(-50%,-30%);
+  background: white;
+  z-index: 2;
+  .close{
+    color:white;
+    text-align: center;
+    height:15%;
+    background: chocolate;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}

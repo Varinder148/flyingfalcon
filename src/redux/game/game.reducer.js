@@ -6,12 +6,13 @@ import {
 } from "./game.utils";
 
 const INITIAL_STATE = {
-  token: { value: "", error: false, isFetching: false },
-  planets: { value: [], error: false, isFetching: false },
-  vehicles: { value: [], error: false, isFetching: false },
+  token: { value: "", error: "", isFetching: false },
+  planets: { value: [], error: "", isFetching: false },
+  vehicles: { value: [], error: "", isFetching: false },
   filteredPlanets: {},
   filteredVehicles: {},
   availableVehicleCount: [],
+  result: { value: "", error: "", isFetching: false },
 };
 
 const gameReducer = (state = INITIAL_STATE, action) => {
@@ -41,7 +42,7 @@ const gameReducer = (state = INITIAL_STATE, action) => {
         [action.requestType]: {
           ...state[action.requestType],
           isFetching: false,
-          error: true,
+          error: action.msg,
         },
       };
 

@@ -80,14 +80,14 @@ const mapStateToProps = createStructuredSelector({
 });
 
 
-// The empty string in addVehicle will help us normalize count
-// in some edge cases. This empty string will become a placeholder
-// for playerSelectedVehicle with this selectorId
+// The empty object in addVehicle will help us normalize count
+// in some edge cases. This empty object will become a placeholder
+// for playerSelectedVehicle with this instance's selectorId
 const mapDispatchToProps = (dispatch) => ({
   addPlanet: (selectorId, planet) => {
     dispatch(addPlanetStart(selectorId, planet));
   },
-  addVehicle: (selectorId) => dispatch(addVehicleStart(selectorId, "")),
+  addVehicle: (selectorId) => dispatch(addVehicleStart(selectorId, {})),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlanetsSelection);

@@ -16,7 +16,7 @@ export const disableVehiclesUtil = (
   availableVehicleCount
 ) => {
   let VehiclesThatCanReachThisPlanet = origVehicles.map((vehicle) => {
-    let isDisabled = vehicle.max_distance <= planetBeingSelected.distance;
+    let isDisabled = vehicle.max_distance < planetBeingSelected.distance;
 
     let vehicleCountFound = availableVehicleCount.find(
       (countVehicle) => countVehicle.name === vehicle.name

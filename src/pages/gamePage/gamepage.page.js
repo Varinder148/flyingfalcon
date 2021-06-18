@@ -5,6 +5,7 @@ import { launchSearchAsync } from "../../redux/player/player.action";
 import { connect } from "react-redux";
 
 const Gamepage = ({ launchSearchAsync }) => (
+  
   <div className="gamepage">
     <div className="selectors">
       <div>

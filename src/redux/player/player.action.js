@@ -6,6 +6,9 @@ import {
   decrementVehicleCount,
   resetGame,
   loadGame,
+  startFetch,
+  fetchSuccess,
+  fetchFail,
 } from "../game/game.action";
 import axios from "axios";
 
@@ -31,7 +34,6 @@ export const addPlanetStart = (selectorId, planet) => {
     let selectedPlanetsValueFromStore = store.getState().player.selectedPlanets;
     dispatch(startFilteringPlanets(selectedPlanetsValueFromStore));
     dispatch(disableCorrespondingVehicles(selectorId, planet));
-    // dispatch(initiateAvailableVehicleCount());
   };
 };
 
@@ -50,31 +52,37 @@ export const addVehicleStart = (selectorId, vehicle) => {
 
 export const launchSearchAsync = (playerPlanets, playerVehicles) => {
   return async (dispatch) => {
+    dispatch(startFetch("result"));
+
     let state = store.getState();
     let token = state.game.token.value;
     let { selectedPlanets, selectedVehicles } = state.player;
 
-    let planetsArray = mapSelectedValuesToNamesUtil(
-      Object.values(selectedPlanets)
-    );
-    let vehiclesArray = mapSelectedValuesToNamesUtil(
-      Object.values(selectedVehicles)
-    );
+    let planetsArray = mapObjectsToNamesUtil(Object.values(selectedPlanets));
+    let vehiclesArray = mapObjectsToNamesUtil(Object.values(selectedVehicles));
 
     let requestBody = {
       token: token,
       planet_names: planetsArray,
       vehicle_names: vehiclesArray,
     };
-    let response = await axios.post("/find", requestBody);
-    if (response.data.status === "success")
-      alert("King found on " + response.data.planet_name + ".");
-    else alert("Shoot! It's a miss.");
-    dispatch(resetFullGame());
+
+    try {
+      let response = await axios.post("/find", requestBody);
+
+      let responseMsg = "";
+      if (response.data.status === "success")
+        responseMsg = "King found on " + response.data.planet_name + ".";
+      else responseMsg = "Shoot! It's a miss.";
+      dispatch(fetchSuccess("result", responseMsg));
+      dispatch(resetFullGame());
+    } catch (error) {
+      dispatch(fetchFail("result", "Something went wrong. Please try again"));
+    }
   };
 };
 
-const mapSelectedValuesToNamesUtil = (selectedObject) => {
+const mapObjectsToNamesUtil = (selectedObject) => {
   return selectedObject.map((object) => object.name);
 };
 
