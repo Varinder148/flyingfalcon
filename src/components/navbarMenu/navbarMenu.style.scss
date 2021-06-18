@@ -1,8 +1,16 @@
 .navbar{
     display: inline-block;
-    width:70px;
+    width:5rem;
     list-style: none;
-    padding:5px;
     text-align: center;
-
+    li:hover{
+        padding:1rem;
+        cursor: pointer;
+        color:white;
+        background: chocolate;
+        border:1px solid chocolate;
+        border-radius: 100%;
+        
+    }
 }
+

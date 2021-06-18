@@ -25,6 +25,7 @@ const PlanetsSelection = ({
   addVehicle,
 }) => {
   if (selectPlanets.isFetching || !selectPlanets.value) {
+    setShowVehicles(false)
     return <span>Loading...</span>;
   }
 

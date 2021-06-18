@@ -27,7 +27,6 @@ export const disableVehiclesUtil = (
     return { ...vehicle, disabled: isDisabled };
   });
 
-  console.log("res", VehiclesThatCanReachThisPlanet);
   return { ...filteredVehicles, [selectorId]: VehiclesThatCanReachThisPlanet };
 };
 

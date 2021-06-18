@@ -1,12 +1,18 @@
 import React from "react";
-import './navbarMenu.style.scss';
+import { connect } from "react-redux";
+import { resetFullGame } from "../../redux/player/player.action";
+import "./navbarMenu.style.scss";
 
-const NavbarMenu = () => {
+const NavbarMenu = ({ resetFullGame }) => {
   return (
     <ul className="navbar">
-      <li>Reset</li>
+      <li onClick={resetFullGame}>Reset</li>
     </ul>
   );
 };
 
-export default NavbarMenu
+const mapDispatchToProps = (dispatch) => ({
+  resetFullGame: () => dispatch(resetFullGame()),
+});
+
+export default connect(null, mapDispatchToProps)(NavbarMenu);

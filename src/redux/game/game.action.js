@@ -1,39 +1,44 @@
 import axios from "axios";
+import { store } from "../store";
 
-import gameType from "./game.type";
+import gameTypes from "./game.type";
 
 export const startFilteringPlanets = (playerPlanets) => ({
-  type: gameType.FILTER_PLANETS,
+  type: gameTypes.FILTER_PLANETS,
   payload: playerPlanets,
 });
 
 export const startFetch = (requestType) => ({
-  type: gameType.START_FETCHING,
+  type: gameTypes.START_FETCHING,
   requestType: requestType,
 });
 
 export const fetchSuccess = (requestType, token) => ({
-  type: gameType.REQUEST_SUCCESS,
+  type: gameTypes.REQUEST_SUCCESS,
   payload: token,
   requestType: requestType,
 });
 
 export const fetchFail = (requestType) => ({
-  type: gameType.REQUEST_FAIL,
+  type: gameTypes.REQUEST_FAIL,
   requestType: requestType,
 });
 
 export const disableCorrespondingVehicles = (selectorId, planet) => ({
-  type: gameType.DISABLE_CORRESPONDING_VEHICLES,
+  type: gameTypes.DISABLE_CORRESPONDING_VEHICLES,
   payload: planet,
   selectorId: selectorId,
 });
 
 export const decrementVehicleCount = (selectorId, vehicle, playerVehicles) => ({
-  type: gameType.DECREMENT_VEHICLE_COUNT,
+  type: gameTypes.DECREMENT_VEHICLE_COUNT,
   payload: vehicle,
   selectorId: selectorId,
   playerVehicles: playerVehicles,
+});
+
+export const resetGame = () => ({
+  type: gameTypes.RESET_GAME,
 });
 
 const fetchTokenAsync = () => {
@@ -74,10 +79,6 @@ const fetchVehiclesAsync = () => {
       dispatch(fetchFail(requestType));
     }
   };
-};
-
-const launchSearch = (playerPlanets, playerVehicles) => {
-  return async (dispatch) => {};
 };
 
 export const loadGame = () => {

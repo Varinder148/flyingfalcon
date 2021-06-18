@@ -1,8 +1,10 @@
 import "./gamepage.style.scss";
 import SelectionHolder from "../../components/selectionHolder/selectionHolder.component";
 import ScoreDisplay from "../../components/scoreDisplay/scoreDisplay.component";
+import { launchSearchAsync } from "../../redux/player/player.action";
+import { connect } from "react-redux";
 
-const Gamepage = () => (
+const Gamepage = ({ launchSearchAsync }) => (
   <div className="gamepage">
     <div className="selectors">
       <div>
@@ -18,11 +20,17 @@ const Gamepage = () => (
         <SelectionHolder selectorId={4} />
       </div>
     </div>
-    <button className="submit">Deploy the troops</button>
     <div className="score-display">
       <ScoreDisplay />
     </div>
+    <button className="submit" onClick={launchSearchAsync}>
+      Deploy the troops
+    </button>
   </div>
 );
 
-export default Gamepage;
+const mapDispatchToProps = (dispatch) => ({
+  launchSearchAsync: () => dispatch(launchSearchAsync()),
+});
+
+export default connect(null, mapDispatchToProps)(Gamepage);

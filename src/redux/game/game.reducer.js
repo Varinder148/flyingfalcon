@@ -1,15 +1,14 @@
-import gameType from "./game.type";
+import gameTypes from "./game.type";
 import {
   disableVehiclesUtil,
   filterPlanetsUtil,
-  initiateCountUtil,
   decrementVehicleCountUtil,
 } from "./game.utils";
 
 const INITIAL_STATE = {
   token: { value: "", error: false, isFetching: false },
-  planets: { value: "", error: false, isFetching: false },
-  vehicles: { value: "", error: false, isFetching: false },
+  planets: { value: [], error: false, isFetching: false },
+  vehicles: { value: [], error: false, isFetching: false },
   filteredPlanets: {},
   filteredVehicles: {},
   availableVehicleCount: [],
@@ -17,7 +16,7 @@ const INITIAL_STATE = {
 
 const gameReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case gameType.START_FETCHING:
+    case gameTypes.START_FETCHING:
       return {
         ...state,
         [action.requestType]: {
@@ -26,7 +25,7 @@ const gameReducer = (state = INITIAL_STATE, action) => {
         },
       };
 
-    case gameType.REQUEST_SUCCESS:
+    case gameTypes.REQUEST_SUCCESS:
       return {
         ...state,
         [action.requestType]: {
@@ -36,7 +35,7 @@ const gameReducer = (state = INITIAL_STATE, action) => {
         },
       };
 
-    case gameType.REQUEST_FAIL:
+    case gameTypes.REQUEST_FAIL:
       return {
         ...state,
         [action.requestType]: {
@@ -46,13 +45,13 @@ const gameReducer = (state = INITIAL_STATE, action) => {
         },
       };
 
-    case gameType.FILTER_PLANETS:
+    case gameTypes.FILTER_PLANETS:
       return {
         ...state,
         filteredPlanets: filterPlanetsUtil(state.planets.value, action.payload),
       };
 
-    case gameType.DISABLE_CORRESPONDING_VEHICLES:
+    case gameTypes.DISABLE_CORRESPONDING_VEHICLES:
       return {
         ...state,
         filteredVehicles: disableVehiclesUtil(
@@ -64,7 +63,7 @@ const gameReducer = (state = INITIAL_STATE, action) => {
         ),
       };
 
-    case gameType.DECREMENT_VEHICLE_COUNT:
+    case gameTypes.DECREMENT_VEHICLE_COUNT:
       return {
         ...state,
         availableVehicleCount: decrementVehicleCountUtil(
@@ -72,6 +71,9 @@ const gameReducer = (state = INITIAL_STATE, action) => {
           state.vehicles.value
         ),
       };
+
+    case gameTypes.RESET_GAME:
+      return INITIAL_STATE;
 
     default:
       return state;

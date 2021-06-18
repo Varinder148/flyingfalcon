@@ -1,7 +1,7 @@
 .gamepage {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 2fr 1fr;
+  // grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2fr;
   min-height: calc(100vh - 5.5rem);
   .selectors {
     display: grid;
@@ -15,14 +15,14 @@
     background: chocolate;
     color: white;
     border: none;
+    height:4rem;
     border: 1px solid black;
-    padding: 10px 40px;
+    padding: 1rem 3rem;
   }
 
   .score-display {
-    position: relative;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    text-align: center;
+    margin: 2rem 0rem;
+    font-size: 2rem;
   }
 }
