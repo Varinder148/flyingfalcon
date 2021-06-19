@@ -1,7 +1,16 @@
+import { connect } from "react-redux";
 import "./msgBox.style.scss";
+import { selectResult } from "../../redux/game/game.selector";
 
-const MsgBox = () => <div className="msg-box">
-  <div className='close'>Close</div>
-</div>;
+import { createStructuredSelector } from "reselect";
 
-export default MsgBox
+const MsgBox = ({ selectResult }) => (
+  <div className={`msg ${selectResult.error === "" && selectResult.value.includes("found") ? "green" : "red"}`}>
+    {selectResult.error !== "" ? selectResult.error : selectResult.value}
+  </div>
+);
+
+const mapStateToProps = createStructuredSelector({
+  selectResult,
+});
+export default connect(mapStateToProps)(MsgBox);

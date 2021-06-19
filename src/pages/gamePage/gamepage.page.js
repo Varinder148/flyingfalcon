@@ -1,37 +1,53 @@
 import "./gamepage.style.scss";
 import SelectionHolder from "../../components/selectionHolder/selectionHolder.component";
 import ScoreDisplay from "../../components/scoreDisplay/scoreDisplay.component";
-import { launchSearchAsync } from "../../redux/player/player.action";
+import {
+  launchSearchAsync,
+  resetFullGame,
+} from "../../redux/player/player.action";
 import { connect } from "react-redux";
+import MsgBox from "../../components/msgBox/msgBox.component";
+import { selectResult } from "../../redux/game/game.selector";
+import { createStructuredSelector } from "reselect";
 
-const Gamepage = ({ launchSearchAsync }) => (
-  
-  <div className="gamepage">
-    <div className="selectors">
-      <div>
-        <SelectionHolder selectorId={1} />
+const Gamepage = ({ selectResult, launchSearchAsync }) => (
+  <>
+    <MsgBox />
+    <div className="gamepage">
+      <div className="selectors">
+        <div>
+          <SelectionHolder selectorId={1} />
+        </div>
+        <div>
+          <SelectionHolder selectorId={2} />
+        </div>
+        <div>
+          <SelectionHolder selectorId={3} />
+        </div>
+        <div>
+          <SelectionHolder selectorId={4} />
+        </div>
       </div>
-      <div>
-        <SelectionHolder selectorId={2} />
+      <div className="score-display">
+        <ScoreDisplay />
       </div>
-      <div>
-        <SelectionHolder selectorId={3} />
-      </div>
-      <div>
-        <SelectionHolder selectorId={4} />
-      </div>
+      <button
+        className="submit"
+        onClick={launchSearchAsync}
+        disabled={selectResult.isFetching}
+      >
+        Deploy the troops
+      </button>
     </div>
-    <div className="score-display">
-      <ScoreDisplay />
-    </div>
-    <button className="submit" onClick={launchSearchAsync}>
-      Deploy the troops
-    </button>
-  </div>
+  </>
 );
 
 const mapDispatchToProps = (dispatch) => ({
   launchSearchAsync: () => dispatch(launchSearchAsync()),
+  resetFullGame: () => dispatch(resetFullGame()),
 });
 
-export default connect(null, mapDispatchToProps)(Gamepage);
+const mapStateToProps = createStructuredSelector({
+  selectResult
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Gamepage);

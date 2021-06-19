@@ -1,12 +1,10 @@
+import { useEffect } from "react";
 import "./planetSelector.style.scss";
 
 import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
 
-import {
-  selectFilteredPlanets,
-  selectPlanets,
-} from "../../redux/game/game.selector";
+import { selectFilteredPlanets } from "../../redux/game/game.selector";
 import { selectPlayerSelectedPlanets } from "../../redux/player/player.selector";
 
 import {
@@ -14,7 +12,7 @@ import {
   addVehicleStart,
 } from "../../redux/player/player.action";
 
-const PlanetsSelection = ({
+const PlanetSelector = ({
   selectorId,
   showVehicles,
   setShowVehicles,
@@ -24,10 +22,13 @@ const PlanetsSelection = ({
   addPlanet,
   addVehicle,
 }) => {
-  if (selectPlanets.isFetching || !selectPlanets.value) {
-    setShowVehicles(false)
-    return <span>Loading...</span>;
-  }
+  useEffect(() => {
+    if (selectPlayerSelectedPlanets[selectorId]) {
+      setShowVehicles(true);
+    } else {
+      setShowVehicles(false);
+    }
+  }, [showVehicles, selectPlayerSelectedPlanets, selectorId, setShowVehicles]);
 
   let planetsValue = selectPlanets.value;
 
@@ -74,11 +75,9 @@ const PlanetsSelection = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  selectPlanets: selectPlanets,
   selectFilteredPlanets: selectFilteredPlanets,
   selectPlayerSelectedPlanets: selectPlayerSelectedPlanets,
 });
-
 
 // The empty object in addVehicle will help us normalize count
 // in some edge cases. This empty object will become a placeholder
@@ -87,7 +86,7 @@ const mapDispatchToProps = (dispatch) => ({
   addPlanet: (selectorId, planet) => {
     dispatch(addPlanetStart(selectorId, planet));
   },
-  addVehicle: (selectorId) => dispatch(addVehicleStart(selectorId, {})),
+  addVehicle: (selectorId) => dispatch(addVehicleStart(selectorId, "")),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlanetsSelection);
+export default connect(mapStateToProps, mapDispatchToProps)(PlanetSelector);

@@ -30,7 +30,7 @@ export const disableVehiclesUtil = (
   return { ...filteredVehicles, [selectorId]: VehiclesThatCanReachThisPlanet };
 };
 
-export const decrementVehicleCountUtil = (
+export const calculateVehicleCountUtil = (
   playerSelectedVehicles,
   origVehicles
 ) => {

@@ -12,6 +12,11 @@ export const selectVehicles = createSelector(
   (game) => game.vehicles
 );
 
+export const selectResult = createSelector(
+  [selectGame],
+  game => game.result
+)
+
 export const selectFilteredPlanets = createSelector(
   [selectGame],
   (game) => game.filteredPlanets

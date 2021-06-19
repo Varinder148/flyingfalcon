@@ -6,7 +6,6 @@ import { createStructuredSelector } from "reselect";
 import {
   selectFilteredVehicles,
   selectAvailableVehicleCount,
-  selectVehicles,
 } from "../../redux/game/game.selector";
 import { selectPlayerSelectedVehicles } from "../../redux/player/player.selector";
 
@@ -20,9 +19,9 @@ const VehicleSelector = ({
   selectPlayerSelectedVehicles,
   selectAvailableVehicleCount,
 }) => {
-  if (selectVehicles.isFetching) {
-    return <span>Loading...</span>;
-  }
+  // if (selectVehicles.isFetching) {
+  //   return <span>Loading...</span>;
+  // }
 
   const vehicleChangeHandler = (e) => {
     let currVehicle = e.target.value;
@@ -43,9 +42,7 @@ const VehicleSelector = ({
     return foundVehicle ? foundVehicle.total_no : currVehicle.total_no;
   };
 
-  const checkIfCurrentPlayerSelectedVehicleIsEqualToVehicleInLoop = (
-    vehicle
-  ) =>
+  const checkIfCurrentPlayerSelectedVehicleIsEqualToVehicleInLoop = (vehicle) =>
     (selectPlayerSelectedVehicles[selectorId] &&
       vehicle.name === selectPlayerSelectedVehicles[selectorId].name) ||
     false;
@@ -61,9 +58,7 @@ const VehicleSelector = ({
             value={JSON.stringify(vehicle)}
             checked={
               !vehicle.disabled &&
-              checkIfCurrentPlayerSelectedVehicleIsEqualToVehicleInLoop(
-                vehicle
-              )
+              checkIfCurrentPlayerSelectedVehicleIsEqualToVehicleInLoop(vehicle)
             }
             onChange={vehicleChangeHandler}
             disabled={
@@ -83,7 +78,6 @@ const VehicleSelector = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  selectVehicles: selectVehicles,
   selectFilteredVehicles: selectFilteredVehicles,
   selectPlayerSelectedVehicles: selectPlayerSelectedVehicles,
   selectAvailableVehicleCount: selectAvailableVehicleCount,

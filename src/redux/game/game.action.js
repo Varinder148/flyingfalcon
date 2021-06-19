@@ -18,10 +18,10 @@ export const fetchSuccess = (requestType, payload) => ({
   requestType: requestType,
 });
 
-export const fetchFail = (requestType,msg) => ({
+export const fetchFail = (requestType, msg) => ({
   type: gameTypes.REQUEST_FAIL,
   requestType: requestType,
-  msg: msg
+  msg: msg,
 });
 
 export const disableCorrespondingVehicles = (selectorId, planet) => ({
@@ -56,7 +56,9 @@ const fetchTokenAsync = () => {
       let res = await axios.post("/token");
       dispatch(fetchSuccess(requestType, res.data.token));
     } catch {
-      dispatch(fetchFail(requestType));
+      dispatch(
+        fetchFail(requestType, "Something went wrong while fetching token")
+      );
     }
   };
 };
@@ -69,7 +71,9 @@ const fetchPlanetsAsync = () => {
       let res = await axios.get("/planets");
       dispatch(fetchSuccess(requestType, res.data));
     } catch {
-      dispatch(fetchFail(requestType));
+      dispatch(
+        fetchFail(requestType, "Something went wrong while fetching Planets")
+      );
     }
   };
 };
@@ -82,7 +86,9 @@ const fetchVehiclesAsync = () => {
       let res = await axios.get("/vehicles");
       dispatch(fetchSuccess(requestType, res.data));
     } catch {
-      dispatch(fetchFail(requestType));
+      dispatch(
+        fetchFail(requestType, "Something went wrong while fetching Vehicles.")
+      );
     }
   };
 };

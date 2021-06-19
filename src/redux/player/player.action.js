@@ -52,6 +52,8 @@ export const addVehicleStart = (selectorId, vehicle) => {
 
 export const launchSearchAsync = (playerPlanets, playerVehicles) => {
   return async (dispatch) => {
+    dispatch(fetchFail("result", ""));
+    dispatch(fetchSuccess("result", ""));
     dispatch(startFetch("result"));
 
     let state = store.getState();
@@ -61,6 +63,15 @@ export const launchSearchAsync = (playerPlanets, playerVehicles) => {
     let planetsArray = mapObjectsToNamesUtil(Object.values(selectedPlanets));
     let vehiclesArray = mapObjectsToNamesUtil(Object.values(selectedVehicles));
 
+    if (planetsArray.length !== 4 || vehiclesArray.length !== 4) {
+      dispatch(fetchFail("result", "Please select 4 planets and 4 vehicles"));
+      return;
+    }
+    if (vehiclesArray.find((vehicle)=>vehicle==="")) {
+      dispatch(fetchFail("result", "Please select 4 vehicles"));
+      return;
+    }
+
     let requestBody = {
       token: token,
       planet_names: planetsArray,
@@ -69,13 +80,11 @@ export const launchSearchAsync = (playerPlanets, playerVehicles) => {
 
     try {
       let response = await axios.post("/find", requestBody);
-
       let responseMsg = "";
       if (response.data.status === "success")
         responseMsg = "King found on " + response.data.planet_name + ".";
       else responseMsg = "Shoot! It's a miss.";
       dispatch(fetchSuccess("result", responseMsg));
-      dispatch(resetFullGame());
     } catch (error) {
       dispatch(fetchFail("result", "Something went wrong. Please try again"));
     }

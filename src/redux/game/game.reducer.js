@@ -2,7 +2,7 @@ import gameTypes from "./game.type";
 import {
   disableVehiclesUtil,
   filterPlanetsUtil,
-  decrementVehicleCountUtil,
+  calculateVehicleCountUtil,
 } from "./game.utils";
 
 const INITIAL_STATE = {
@@ -64,10 +64,10 @@ const gameReducer = (state = INITIAL_STATE, action) => {
         ),
       };
 
-    case gameTypes.DECREMENT_VEHICLE_COUNT:
+    case gameTypes.CALCULATE_VEHICLE_COUNT:
       return {
         ...state,
-        availableVehicleCount: decrementVehicleCountUtil(
+        availableVehicleCount: calculateVehicleCountUtil(
           action.playerVehicles,
           state.vehicles.value
         ),
