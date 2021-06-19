@@ -1,23 +1,26 @@
+
 .gamepage {
   display: grid;
   // grid-template-columns: 2fr 1fr;
   grid-template-rows: 2fr;
-  min-height: calc(100vh - 5.5rem);
+  min-height: calc(100vh - 5.5rem - 3rem);
+
   .selectors {
     display: grid;
+    padding-top: 3rem;
     grid-template-columns: repeat(auto-fit, 200px);
-    align-content: center;
+    // align-content: center;
     justify-content: center;
     gap: 1rem;
   }
 
   .submit {
-    background: chocolate;
-    color: white;
     border: none;
-    height:4rem;
+    height: 4rem;
     border: 1px solid black;
     padding: 1rem 3rem;
+    max-width: 20rem;
+    justify-self: center;
   }
 
   .score-display {
