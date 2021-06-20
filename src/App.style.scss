@@ -1,0 +1,12 @@
+.misc-messages{
+  position:absolute;
+  top:30%;
+  left:50%;
+  width:100%;
+  transform: translate(-50%,-30%);
+  text-align: center;
+  span{
+    display: block;
+    margin:0.5rem;
+  }
+}

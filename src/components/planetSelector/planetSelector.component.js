@@ -13,7 +13,7 @@ import {
 } from "../../redux/player/player.action";
 
 // Dropdown to select planets
-const PlanetSelector = ({
+export const PlanetSelector = ({
   selectorId,
   showVehicles,
   setShowVehicles,
@@ -60,7 +60,7 @@ const PlanetSelector = ({
         <option disabled value="empty">
           -- Pick a Planet --
         </option>
-        {planetsValue.map((planet) => (
+        {planetsValue && planetsValue.map((planet) => (
           <option key={planet.name} value={JSON.stringify(planet)}>
             {planet.name}
           </option>

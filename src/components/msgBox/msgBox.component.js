@@ -5,7 +5,7 @@ import { selectResult } from "../../redux/game/game.selector";
 import { createStructuredSelector } from "reselect";
 
 // The box below the Header
-const MsgBox = ({ selectResult }) => (
+export const MsgBox = ({ selectResult }) => (
   <div className="msg-offset">
     <div
       className={`msg ${

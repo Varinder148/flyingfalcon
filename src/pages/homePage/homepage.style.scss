@@ -1,0 +1,23 @@
+.homepage {
+  width:100%;
+  overflow: hidden;
+  p {
+    text-align: center;
+    padding: 2rem;
+    span {
+      display: block;
+      padding: 0.5rem 0rem;
+    }
+    .link {
+      text-decoration: underline;
+      font-weight: 400;
+      transform: scale(1.2, 1.2);
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .marginTop {
+      margin-top: 2rem;
+    }
+  }
+}

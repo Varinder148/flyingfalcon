@@ -3,7 +3,7 @@ import { createStructuredSelector } from "reselect";
 
 import { selectTimeTaken } from "../../redux/player/player.selector";
 
-const ScoreDisplay = ({ selectTimeTaken }) => (
+export const ScoreDisplay = ({ selectTimeTaken }) => (
   <>
     Time Taken:
     {selectTimeTaken ? selectTimeTaken : 0}
