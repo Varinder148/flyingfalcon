@@ -27,14 +27,16 @@ const Gamepage = ({ selectResult, launchSearchAsync, resetFullGame }) => {
         <div className="score-display">
           <ScoreDisplay />
         </div>
-        <button
-          className="submit"
-          onClick={launchSearchAsync}
-          disabled={selectResult.isFetching}
-        >
-          Deploy the troops
-        </button>
-        {(selectResult.value !== "") && (
+        {selectResult.value === "" && (
+          <button
+            className="submit"
+            onClick={launchSearchAsync}
+            disabled={selectResult.isFetching}
+          >
+            Deploy the troops
+          </button>
+        )}
+        {selectResult.value !== "" && (
           <button className="submit" onClick={resetFullGame}>
             New Game?
           </button>
