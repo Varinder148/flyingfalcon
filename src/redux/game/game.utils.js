@@ -39,10 +39,10 @@ export const calculateVehicleCountUtil = (
   playerSelectedVehicles = Object.values(playerSelectedVehicles);
 
   origVehicles.forEach((origVehicle) => {
-    let vehiclesFound = playerSelectedVehicles.filter(
+    let numberOfVehiclesFound = playerSelectedVehicles.filter(
       (vehicle) => origVehicle.name === vehicle.name
     );
-    let count = origVehicle.total_no - vehiclesFound.length;
+    let count = origVehicle.total_no - numberOfVehiclesFound.length;
     count = count <= 0 ? 0 : count;
     let vehicle = { name: origVehicle.name, total_no: count };
     res.push(vehicle);

@@ -30,8 +30,8 @@ export const disableCorrespondingVehicles = (selectorId, planet) => ({
   selectorId: selectorId,
 });
 
-export const decrementVehicleCount = (selectorId, vehicle, playerVehicles) => ({
-  type: gameTypes.DECREMENT_VEHICLE_COUNT,
+export const calculateVehicleCount = (selectorId, vehicle, playerVehicles) => ({
+  type: gameTypes.CALCULATE_VEHICLE_COUNT,
   payload: vehicle,
   selectorId: selectorId,
   playerVehicles: playerVehicles,

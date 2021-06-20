@@ -10,7 +10,7 @@ import MsgBox from "../../components/msgBox/msgBox.component";
 import { selectResult } from "../../redux/game/game.selector";
 import { createStructuredSelector } from "reselect";
 
-const Gamepage = ({ selectResult, launchSearchAsync }) => (
+const Gamepage = ({ selectResult, launchSearchAsync, resetFullGame }) => (
   <>
     <MsgBox />
     <div className="gamepage">
@@ -38,6 +38,9 @@ const Gamepage = ({ selectResult, launchSearchAsync }) => (
       >
         Deploy the troops
       </button>
+      {(selectResult.value !== "" || selectResult.error !== "") && (
+        <button className='submit' onClick={resetFullGame}>New Game?</button>
+      )}
     </div>
   </>
 );
@@ -48,6 +51,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = createStructuredSelector({
-  selectResult
-})
+  selectResult,
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Gamepage);

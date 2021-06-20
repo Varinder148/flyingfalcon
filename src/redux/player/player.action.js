@@ -3,7 +3,7 @@ import { store } from "../store";
 import {
   startFilteringPlanets,
   disableCorrespondingVehicles,
-  decrementVehicleCount,
+  calculateVehicleCount,
   resetGame,
   loadGame,
   startFetch,
@@ -41,7 +41,7 @@ export const addVehicleStart = (selectorId, vehicle) => {
   return (dispatch) => {
     dispatch(addVehicle(selectorId, vehicle));
     dispatch(
-      decrementVehicleCount(
+      calculateVehicleCount(
         selectorId,
         vehicle,
         store.getState().player.selectedVehicles

@@ -38,7 +38,6 @@ const VehicleSelector = ({
     let foundVehicle = selectAvailableVehicleCount.find(
       (vehicle) => vehicle.name === currVehicle.name
     );
-
     return foundVehicle ? foundVehicle.total_no : currVehicle.total_no;
   };
 
