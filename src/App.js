@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 
 import Header from "./components/header/header.component";
 import Gamepage from "./pages/gamePage/gamepage.page";
@@ -10,12 +10,12 @@ const App = ({ loadGame }) => {
   return (
     <>
       <Header />
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route exact path="/" component={Gamepage} />
           <Route exact path="*" render={()=><h2>You seem to be lost,me friend</h2>} />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 };
