@@ -1,16 +1,14 @@
-.navbar{
-    display: inline-block;
-    width:5rem;
-    list-style: none;
-    text-align: center;
-    li:hover{
-        padding:1rem;
-        cursor: pointer;
-        color:white;
-        background: chocolate;
-        border:1px solid chocolate;
-        border-radius: 1rem;
-        
-    }
-}
+@import '../../commonStyles.scss';
 
+.navbar {
+  width: 5rem;
+  list-style: none;
+  text-align: center;
+  li:hover {
+    padding: 1rem;
+    cursor: pointer;
+    color: white;
+    background: $primaryColor;
+    border-radius: 1rem;
+  }
+}

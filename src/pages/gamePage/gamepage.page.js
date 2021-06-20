@@ -10,40 +10,39 @@ import MsgBox from "../../components/msgBox/msgBox.component";
 import { selectResult } from "../../redux/game/game.selector";
 import { createStructuredSelector } from "reselect";
 
-const Gamepage = ({ selectResult, launchSearchAsync, resetFullGame }) => (
-  <>
-    <MsgBox />
-    <div className="gamepage">
-      <div className="selectors">
-        <div>
-          <SelectionHolder selectorId={1} />
+const Gamepage = ({ selectResult, launchSearchAsync, resetFullGame }) => {
+  const selectorIds = [1, 2, 3, 4];
+
+  return (
+    <>
+      <MsgBox />
+      <div className="gamepage">
+        <div className="selectors">
+          {selectorIds.map((selectorId) => (
+            <div key={selectorId}>
+              <SelectionHolder selectorId={selectorId} />
+            </div>
+          ))}
         </div>
-        <div>
-          <SelectionHolder selectorId={2} />
+        <div className="score-display">
+          <ScoreDisplay />
         </div>
-        <div>
-          <SelectionHolder selectorId={3} />
-        </div>
-        <div>
-          <SelectionHolder selectorId={4} />
-        </div>
+        <button
+          className="submit"
+          onClick={launchSearchAsync}
+          disabled={selectResult.isFetching}
+        >
+          Deploy the troops
+        </button>
+        {(selectResult.value !== "") && (
+          <button className="submit" onClick={resetFullGame}>
+            New Game?
+          </button>
+        )}
       </div>
-      <div className="score-display">
-        <ScoreDisplay />
-      </div>
-      <button
-        className="submit"
-        onClick={launchSearchAsync}
-        disabled={selectResult.isFetching}
-      >
-        Deploy the troops
-      </button>
-      {(selectResult.value !== "" || selectResult.error !== "") && (
-        <button className='submit' onClick={resetFullGame}>New Game?</button>
-      )}
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 const mapDispatchToProps = (dispatch) => ({
   launchSearchAsync: () => dispatch(launchSearchAsync()),

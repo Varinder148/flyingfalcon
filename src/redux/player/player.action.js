@@ -52,6 +52,7 @@ export const addVehicleStart = (selectorId, vehicle) => {
 
 export const launchSearchAsync = (playerPlanets, playerVehicles) => {
   return async (dispatch) => {
+    //resetting previous error and success messages
     dispatch(fetchFail("result", ""));
     dispatch(fetchSuccess("result", ""));
     dispatch(startFetch("result"));
@@ -82,7 +83,7 @@ export const launchSearchAsync = (playerPlanets, playerVehicles) => {
       let response = await axios.post("/find", requestBody);
       let responseMsg = "";
       if (response.data.status === "success")
-        responseMsg = "King found on " + response.data.planet_name + ".";
+        responseMsg = "Congratulations! You found the queen on " + response.data.planet_name + ".";
       else responseMsg = "Shoot! It's a miss.";
       dispatch(fetchSuccess("result", responseMsg));
     } catch (error) {

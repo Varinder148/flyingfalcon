@@ -1,8 +1,6 @@
-import "./App.css";
 import { connect } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import MsgBox from "./components/msgBox/msgBox.component";
 import Header from "./components/header/header.component";
 import Gamepage from "./pages/gamePage/gamepage.page";
 import ResultPage from "./pages/resultPage/resultPage.component";
@@ -12,7 +10,6 @@ const App = ({ loadGame }) => {
   loadGame();
   return (
     <>
-      {/* <MsgBox /> */}
       <Header />
       <BrowserRouter>
         <Switch>

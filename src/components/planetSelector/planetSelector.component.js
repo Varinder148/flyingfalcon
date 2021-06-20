@@ -12,6 +12,7 @@ import {
   addVehicleStart,
 } from "../../redux/player/player.action";
 
+// Dropdown to select planets
 const PlanetSelector = ({
   selectorId,
   showVehicles,
@@ -43,6 +44,8 @@ const PlanetSelector = ({
     addVehicle(selectorId);
   };
 
+  // switch to selectFilteredPlanets if initial selection is made
+  // i.e. if selectFiltered planets is not empty
   if (selectFilteredPlanets.length > 0) {
     planetsValue = selectFilteredPlanets;
   }
@@ -79,9 +82,11 @@ const mapStateToProps = createStructuredSelector({
   selectPlayerSelectedPlanets: selectPlayerSelectedPlanets,
 });
 
-// The empty object in addVehicle will help us normalize count
-// in some edge cases. This empty object will become a placeholder
+// The empty string in addVehicle will help us normalize count
+// in some edge cases. This empty string will become a placeholder
 // for playerSelectedVehicle with this instance's selectorId
+
+// An empty object or null can be used too. But it will complicate filtering later on.
 const mapDispatchToProps = (dispatch) => ({
   addPlanet: (selectorId, planet) => {
     dispatch(addPlanetStart(selectorId, planet));

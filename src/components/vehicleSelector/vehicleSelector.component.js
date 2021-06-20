@@ -19,9 +19,6 @@ const VehicleSelector = ({
   selectPlayerSelectedVehicles,
   selectAvailableVehicleCount,
 }) => {
-  // if (selectVehicles.isFetching) {
-  //   return <span>Loading...</span>;
-  // }
 
   const vehicleChangeHandler = (e) => {
     let currVehicle = e.target.value;
@@ -69,7 +66,7 @@ const VehicleSelector = ({
           />
           <label htmlFor={`veh${idx}${selectorId}`}>{`${
             vehicle.name
-          }(${findCount(vehicle)})`}</label>
+          } (${findCount(vehicle)})`}</label>
         </div>
       ))}
     </div>

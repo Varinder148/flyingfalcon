@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { resetFullGame } from "../../redux/player/player.action";
 import "./navbarMenu.style.scss";
 
+// Menu in the header
 const NavbarMenu = ({ resetFullGame }) => {
   return (
     <ul className="navbar">

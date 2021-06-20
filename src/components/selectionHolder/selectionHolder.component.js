@@ -7,6 +7,7 @@ import VehicleSelector from "../vehicleSelector/vehicleSelector.component";
 
 import { selectVehicles, selectPlanets } from "../../redux/game/game.selector";
 
+// wrapper for a single selection pair( planetSelector, vehicleSelector )
 const SelectionHolder = ({ selectVehicles, selectPlanets, ...others }) => {
   //UI related state is maintained in Components
   let [showVehicles, setShowVehicles] = useState(false);
@@ -28,7 +29,7 @@ const SelectionHolder = ({ selectVehicles, selectPlanets, ...others }) => {
   );
 };
 
-//listening to changes in orig vehicles and planets
+// listening to changes in orig vehicles and planets
 // so that this component can re-render and don't lead to
 // inconsistencies
 const mapStateToProps = () =>

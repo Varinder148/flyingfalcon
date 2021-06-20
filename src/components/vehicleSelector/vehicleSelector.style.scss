@@ -1,6 +1,11 @@
 .vehicle-menu{
+  margin-top:1rem;
   display: flex;
   flex-direction: column;
+  input[type="radio"]+label{
+    margin:0rem 0.5rem;
+    line-height: 1.5rem;
+  }
   input[type="radio"]:checked+label{
     font-weight: 700;
   }
