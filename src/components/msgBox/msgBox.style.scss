@@ -1,9 +1,21 @@
-.msg {
-  text-align: center;
+.msg-offset {
+  position: relative;
   height: 3rem;
-  font-weight:700;
-  line-height: 3rem;
-  border-bottom: 1px solid black;
+  .msg {
+    top: 5rem;
+    position: fixed;
+    background: white;
+    width: 100%;
+    text-align: center;
+    height: 3rem;
+    font-weight: 700;
+    line-height: 3rem;
+    border-bottom: 1px solid black;
+  }
 }
-.green{color:green}
-.red{color:red}
+.green {
+  color: green;
+}
+.red {
+  color: red;
+}

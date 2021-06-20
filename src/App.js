@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { HashRouter, Route, Switch } from "react-router-dom";
 
 import Header from "./components/header/header.component";
+import Footer from "./components/footer/footer.component";
 import Gamepage from "./pages/gamePage/gamepage.page";
 import { loadGame } from "./redux/game/game.action";
 
@@ -13,9 +14,14 @@ const App = ({ loadGame }) => {
       <HashRouter>
         <Switch>
           <Route exact path="/" component={Gamepage} />
-          <Route exact path="*" render={()=><h2>You seem to be lost,me friend</h2>} />
+          <Route
+            exact
+            path="*"
+            render={() => <h2>You seem to be lost,me friend</h2>}
+          />
         </Switch>
       </HashRouter>
+      <Footer />
     </>
   );
 };
