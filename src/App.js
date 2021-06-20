@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Header from "./components/header/header.component";
 import Gamepage from "./pages/gamePage/gamepage.page";
-import ResultPage from "./pages/resultPage/resultPage.component";
 import { loadGame } from "./redux/game/game.action";
 
 const App = ({ loadGame }) => {
@@ -14,7 +13,7 @@ const App = ({ loadGame }) => {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Gamepage} />
-          <Route exact path="/result" component={ResultPage} />
+          <Route exact path="*" render={()=><h2>You seem to be lost,me friend</h2>} />
         </Switch>
       </BrowserRouter>
     </>
