@@ -26,7 +26,7 @@ const playerReducer = (state = INITIAL_STATE, action) => {
       };
 
     case playerTypes.RESET_PLAYER:
-      return INITIAL_STATE
+      return INITIAL_STATE;
 
     default:
       return state;

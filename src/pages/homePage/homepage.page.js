@@ -26,7 +26,7 @@ const Homepage = ({ history }) => (
       <span
         className="link"
         onClick={() => {
-          history.push('goodbye');
+          history.push("goodbye");
         }}
       >
         Let the Queen live happily in the hiding
