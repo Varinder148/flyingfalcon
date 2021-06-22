@@ -60,11 +60,12 @@ export const PlanetSelector = ({
         <option disabled value="empty">
           -- Pick a Planet --
         </option>
-        {planetsValue && planetsValue.map((planet) => (
-          <option key={planet.name} value={JSON.stringify(planet)}>
-            {planet.name}
-          </option>
-        ))}
+        {planetsValue &&
+          planetsValue.map((planet) => (
+            <option key={planet.name} value={JSON.stringify(planet)}>
+              {planet.name}
+            </option>
+          ))}
         {selectPlayerSelectedPlanets[selectorId] ? (
           <option
             value={JSON.stringify(selectPlayerSelectedPlanets[selectorId])}

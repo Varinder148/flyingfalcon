@@ -1,9 +1,8 @@
-
 .gamepage {
   display: grid;
   grid-template-rows: 2fr;
   min-height: 50vh;
-  padding:2rem;
+  padding: 2rem;
   .selectors {
     display: grid;
     padding-top: 3rem;
@@ -13,11 +12,11 @@
   }
 
   .submit {
-    margin:5px;
+    margin: 5px;
     border: none;
     height: 4rem;
     border: 1px solid black;
-    height:2rem;
+    height: 2rem;
     padding: 0rem 3rem;
     max-width: 20rem;
     justify-self: center;

@@ -6,7 +6,7 @@ const createDummy = () => {
     selectorId: 1,
     showVehicles: true,
     setShowVehicles: jest.fn(),
-    selectPlanets: [],
+    selectPlanets: { value: [] },
     selectFilteredPlanets: [],
     selectPlayerSelectedPlanets: [],
     addPlanet: jest.fn(),
@@ -16,21 +16,34 @@ const createDummy = () => {
 };
 
 describe("Planet Selector tests", () => {
-  it("checks if no planets are passed only select option is displayed", () => {
-    const props = createDummy();
+  let props = null;
+  beforeEach(() => {
+    props = createDummy();
+  });
+
+  it("checks if no planets are passed, only 'select' option is displayed", () => {
     const wrapper = shallow(<PlanetSelector {...props} />);
     expect(wrapper.find("option").length).toBe(1);
   });
 
   it("checks correct number of planets are filled in dropdown", () => {
-    let props = createDummy();
-    props.selectPlanets = [{ name: "mars" },{name:"pluto"}];
-    console.log(props.selectPlanets)
-    console.log(wrapper.find("option").length)
+    props = {
+      ...props,
+      selectPlanets: { value: [{ name: "mars" }, { name: "pluto" }] },
+    };
     const wrapper = shallow(<PlanetSelector {...props} />);
-    expect(wrapper.find("option").length).toBe(2);
+
+    expect(wrapper.find("option").length).toBe(3);
   });
 
+  it("checks if filteredPlanets is not empty then the filtered planets are shown", () => {
+    props = {
+      ...props,
+      selectPlanets: { value: [{ name: "mars" }, { name: "pluto" }] },
+      selectFilteredPlanets: [{ name: "mars" }],
+    };
+    const wrapper = shallow(<PlanetSelector {...props} />);
 
-
+    expect(wrapper.find("option").length).toBe(2);
+  });
 });

@@ -1,14 +1,16 @@
 import "./gamepage.style.scss";
-import SelectionHolder from "../../components/selectionHolder/selectionHolder.component";
-import ScoreDisplay from "../../components/scoreDisplay/scoreDisplay.component";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
 import {
   launchSearchAsync,
   resetFullGame,
 } from "../../redux/player/player.action";
-import { connect } from "react-redux";
-import MsgBox from "../../components/msgBox/msgBox.component";
+import SelectionHolder from "../../components/selectionHolder/selectionHolder.component";
 import { selectResult } from "../../redux/game/game.selector";
-import { createStructuredSelector } from "reselect";
+
+import ScoreDisplay from "../../components/scoreDisplay/scoreDisplay.component";
+import MsgBox from "../../components/msgBox/msgBox.component";
 
 const Gamepage = ({ selectResult, launchSearchAsync, resetFullGame }) => {
   const selectorIds = [1, 2, 3, 4];

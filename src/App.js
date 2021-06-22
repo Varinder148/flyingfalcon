@@ -1,4 +1,4 @@
-import './App.style.scss'
+import "./App.style.scss";
 
 import { connect } from "react-redux";
 import { HashRouter, Route, Switch } from "react-router-dom";
@@ -25,9 +25,9 @@ const App = ({ loadGame }) => {
             path="/goodbye"
             render={() => (
               <h2 className="misc-messages">
-                You made the right decision,me friend.
+                You made the right decision, me friend.
                 <span />
-                Now go, Shoo.
+                Now go, Shoo...
               </h2>
             )}
           />
@@ -35,7 +35,7 @@ const App = ({ loadGame }) => {
             exact
             path="*"
             render={() => (
-              <h2 className="misc-messages">You seem to be lost,me friend</h2>
+              <h2 className="misc-messages">You seem to be lost, me friend</h2>
             )}
           />
         </Switch>

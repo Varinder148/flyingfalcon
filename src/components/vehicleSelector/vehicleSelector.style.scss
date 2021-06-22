@@ -1,12 +1,19 @@
-.vehicle-menu{
-  margin-top:1rem;
+@import '../../commonStyles';
+
+.vehicle-menu {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  input[type="radio"]+label{
-    margin:0rem 0.5rem;
+  p{
+    line-height: 2rem;
+    color:$primaryColor;
+    font-weight: 600;
+  }
+  input[type="radio"] + label {
+    margin: 0rem 0.5rem;
     line-height: 1.5rem;
   }
-  input[type="radio"]:checked+label{
+  input[type="radio"]:checked + label {
     font-weight: 700;
   }
 }

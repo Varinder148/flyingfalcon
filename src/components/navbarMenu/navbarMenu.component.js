@@ -1,7 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
-import { resetFullGame } from "../../redux/player/player.action";
 import "./navbarMenu.style.scss";
+
+import { connect } from "react-redux";
+
+import { resetFullGame } from "../../redux/player/player.action";
 
 // Menu in the header
 export const NavbarMenu = ({ resetFullGame }) => {

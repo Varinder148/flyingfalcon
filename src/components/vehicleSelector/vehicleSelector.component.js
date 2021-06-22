@@ -11,7 +11,8 @@ import { selectPlayerSelectedVehicles } from "../../redux/player/player.selector
 
 import { addVehicleStart } from "../../redux/player/player.action";
 
-const VehicleSelector = ({
+//refer to test file to see the type of each prop value
+export const VehicleSelector = ({
   selectorId,
   addVehicle,
   selectVehicles,
@@ -19,7 +20,6 @@ const VehicleSelector = ({
   selectPlayerSelectedVehicles,
   selectAvailableVehicleCount,
 }) => {
-
   const vehicleChangeHandler = (e) => {
     let currVehicle = e.target.value;
     addVehicle(selectorId, currVehicle ? JSON.parse(currVehicle) : null);
@@ -45,6 +45,7 @@ const VehicleSelector = ({
 
   return (
     <div className="vehicle-menu">
+      <p>Who will go here?</p>
       {vehiclesValue.map((vehicle, idx) => (
         <div key={vehicle.name}>
           <input

@@ -1,8 +1,9 @@
-import { connect } from "react-redux";
 import "./msgBox.style.scss";
-import { selectResult } from "../../redux/game/game.selector";
 
+import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+
+import { selectResult } from "../../redux/game/game.selector";
 
 // The box below the Header
 export const MsgBox = ({ selectResult }) => (

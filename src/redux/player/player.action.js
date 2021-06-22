@@ -1,5 +1,5 @@
-import playerTypes from "./player.type";
 import { store } from "../store";
+import playerTypes from "./player.type";
 import {
   startFilteringPlanets,
   disableCorrespondingVehicles,
@@ -68,7 +68,7 @@ export const launchSearchAsync = (playerPlanets, playerVehicles) => {
       dispatch(fetchFail("result", "Please select 4 planets and 4 vehicles"));
       return;
     }
-    if (vehiclesArray.find((vehicle)=>vehicle.name===undefined)) {
+    if (vehiclesArray.find((vehicle)=>vehicle===undefined)) {
       dispatch(fetchFail("result", "Please select 4 vehicles"));
       return;
     }
