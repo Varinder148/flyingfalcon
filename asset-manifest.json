@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/flyingfalcon/static/css/main.e2959cbb.chunk.css",
-    "main.js": "/flyingfalcon/static/js/main.421873b3.chunk.js",
-    "main.js.map": "/flyingfalcon/static/js/main.421873b3.chunk.js.map",
+    "main.js": "/flyingfalcon/static/js/main.d82f0bed.chunk.js",
+    "main.js.map": "/flyingfalcon/static/js/main.d82f0bed.chunk.js.map",
     "runtime-main.js": "/flyingfalcon/static/js/runtime-main.77c83565.js",
     "runtime-main.js.map": "/flyingfalcon/static/js/runtime-main.77c83565.js.map",
     "static/js/2.8afd9af1.chunk.js": "/flyingfalcon/static/js/2.8afd9af1.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.77c83565.js",
     "static/js/2.8afd9af1.chunk.js",
     "static/css/main.e2959cbb.chunk.css",
-    "static/js/main.421873b3.chunk.js"
+    "static/js/main.d82f0bed.chunk.js"
   ]
 }
