@@ -68,7 +68,7 @@ export const launchSearchAsync = (playerPlanets, playerVehicles) => {
       dispatch(fetchFail("result", "Please select 4 planets and 4 vehicles"));
       return;
     }
-    if (vehiclesArray.find((vehicle)=>vehicle===undefined)) {
+    if (vehiclesArray.find((vehicle)=> Object.keys(vehicle).length === 0)) {
       dispatch(fetchFail("result", "Please select 4 vehicles"));
       return;
     }
